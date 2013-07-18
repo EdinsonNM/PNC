@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Concurso list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Fechaini</th>
+                <th>Fechafin</th>
+                <th>Presentacion</th>
+                <th>Objetivos</th>
+                <th>Requisitos</th>
+                <th>Participantes</th>
+                <th>Beneficios</th>
+                <th>Categorias</th>
+                <th>Premiootorgar</th>
+                <th>Medallas</th>
+                <th>Cuota</th>
+                <th>Informacion</th>
+                <th>Anio</th>
+                <th>Estadoemp</th>
+                <th>Estadopy</th>
+                <th>Estado</th>
+                <th>Terminoacepta</th>
+                <th>Incpuntaje</th>
+                <th>Evaluacriterio</th>
+                <th>Informeretro</th>
+                <th>Calificacion</th>
+                <th>Prefijo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('concurso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{% if entity.fechaini %}{{ entity.fechaini|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechafin %}{{ entity.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.presentacion }}</td>
+                <td>{{ entity.objetivos }}</td>
+                <td>{{ entity.requisitos }}</td>
+                <td>{{ entity.participantes }}</td>
+                <td>{{ entity.beneficios }}</td>
+                <td>{{ entity.categorias }}</td>
+                <td>{{ entity.premiootorgar }}</td>
+                <td>{{ entity.medallas }}</td>
+                <td>{{ entity.cuota }}</td>
+                <td>{{ entity.informacion }}</td>
+                <td>{{ entity.anio }}</td>
+                <td>{{ entity.estadoemp }}</td>
+                <td>{{ entity.estadopy }}</td>
+                <td>{{ entity.estado }}</td>
+                <td>{{ entity.terminoacepta }}</td>
+                <td>{{ entity.incpuntaje }}</td>
+                <td>{{ entity.evaluacriterio }}</td>
+                <td>{{ entity.informeretro }}</td>
+                <td>{{ entity.calificacion }}</td>
+                <td>{{ entity.prefijo }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('concurso_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('concurso_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('concurso_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

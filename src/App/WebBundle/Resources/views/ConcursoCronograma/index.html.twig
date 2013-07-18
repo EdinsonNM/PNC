@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ConcursoCronograma list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Fechaini</th>
+                <th>Fechafin</th>
+                <th>Fechacrea</th>
+                <th>Fechamodifica</th>
+                <th>User</th>
+                <th>Terminal</th>
+                <th>Ts</th>
+                <th>Fechaamplia</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('concursocronograma_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{% if entity.fechaini %}{{ entity.fechaini|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechafin %}{{ entity.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechacrea %}{{ entity.fechacrea|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechamodifica %}{{ entity.fechamodifica|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.user }}</td>
+                <td>{{ entity.terminal }}</td>
+                <td>{% if entity.TS %}{{ entity.TS|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaamplia %}{{ entity.fechaamplia|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('concursocronograma_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('concursocronograma_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('concursocronograma_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

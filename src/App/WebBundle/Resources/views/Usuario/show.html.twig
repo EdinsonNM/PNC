@@ -1,0 +1,114 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Usuario</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Codusuario</th>
+                <td>{{ entity.codusuario }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Nombrecorto</th>
+                <td>{{ entity.nombrecorto }}</td>
+            </tr>
+            <tr>
+                <th>Loguin</th>
+                <td>{{ entity.loguin }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ entity.estado }}</td>
+            </tr>
+            <tr>
+                <th>Modoaceso</th>
+                <td>{{ entity.modoaceso }}</td>
+            </tr>
+            <tr>
+                <th>Fecharegistro</th>
+                <td>{{ entity.fecharegistro|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ultimoacceso</th>
+                <td>{{ entity.ultimoacceso|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Cambiapass</th>
+                <td>{{ entity.cambiapass }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Tipodocumento</th>
+                <td>{{ entity.tipodocumento }}</td>
+            </tr>
+            <tr>
+                <th>Nrodocumento</th>
+                <td>{{ entity.nrodocumento }}</td>
+            </tr>
+            <tr>
+                <th>Nombres</th>
+                <td>{{ entity.nombres }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ entity.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Fechacrea</th>
+                <td>{{ entity.fechacrea|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechamodifica</th>
+                <td>{{ entity.fechamodifica|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ entity.user }}</td>
+            </tr>
+            <tr>
+                <th>Terminal</th>
+                <td>{{ entity.terminal }}</td>
+            </tr>
+            <tr>
+                <th>Ts</th>
+                <td>{{ entity.TS|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('usuario') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('usuario_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

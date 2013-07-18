@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ConflictoDeInteres</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Razonsocial1</th>
+                <td>{{ entity.razonsocial1 }}</td>
+            </tr>
+            <tr>
+                <th>Ruc</th>
+                <td>{{ entity.ruc }}</td>
+            </tr>
+            <tr>
+                <th>Razonsocial2</th>
+                <td>{{ entity.razonsocial2 }}</td>
+            </tr>
+            <tr>
+                <th>Inicio</th>
+                <td>{{ entity.inicio|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fin</th>
+                <td>{{ entity.fin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Razonsocial3</th>
+                <td>{{ entity.razonsocial3 }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('conflictodeinteres') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('conflictodeinteres_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('conflictodeinteres_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
